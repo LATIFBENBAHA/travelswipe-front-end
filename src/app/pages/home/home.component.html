@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="header-left">
+    <h2>TravelSwipe 🌍</h2>
+  </div>
+  <div class="header-right">
+    <span class="username">Bienvenue, {{ user?.name }}</span>
+    <button (click)="logout()">Logout</button>
+  </div>
+</header>
+<app-swipe-card
+  [activite]="currentActivite"
+  (liked)="like()"
+  (disliked)="dislike()">
+</app-swipe-card>
+
+<!-- Si toutes les activités ont été swipées -->
+<div *ngIf="!currentActivite">
+  
+  <!-- Aucune destination trouvée -->
+  <div *ngIf="destinations.length === 0" class="no-result">
+    <h3>😕 Aucune activité n'a été likée.</h3>
+    <p>Essayez un autre swipe pour découvrir d'autres activités !</p>
+  </div>
+
+  <!-- Destinations trouvées -->
+  <div *ngIf="destinations.length > 0" class="destinations-section">
+    <h3>🌟 Destinations recommandées :</h3>
+    <div class="destinations-grid">
+      <div class="destination-card" *ngFor="let destination of destinations">
+        <img [src]="destination.imageUrl" alt="{{ destination.name }}" />
+        <h4>{{ destination.name }}</h4>
+        <p>{{ destination.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton pour refaire un swipe, toujours visible quand toutes les activités ont été swipées -->
+  <div class="retry-container">
+    <button class="retry-btn" (click)="recommencerSwipe()">🔁 Faire un autre swipe</button>
+  </div>
+
+</div>
+
+
+

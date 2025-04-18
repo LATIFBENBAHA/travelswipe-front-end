@@ -1,0 +1,9 @@
+<form (ngSubmit)="onLogin()">
+  <label for="email">Email</label>
+  <input id="email" type="email" [(ngModel)]="email" name="email" autocomplete="email" required>
+
+  <label for="motdepass">Mot de passe</label>
+  <input id="motdepass" type="password" [(ngModel)]="motdepass" name="motdepass" autocomplete="current-password" required>
+
+  <button type="submit">Login</button>
+</form>

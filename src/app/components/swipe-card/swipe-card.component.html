@@ -1,0 +1,10 @@
+<div class="card" *ngIf="activite">
+  <img [src]="activite.imageUrl" alt="Activité" class="card-img" />
+  <h2>{{ activite.name }}</h2>
+  <p>{{ activite.description }}</p>
+
+  <div class="buttons">
+    <button class="dislike-btn" (click)="dislikeActivite()">👎</button>
+    <button class="like-btn" (click)="likeActivite()">👍</button>
+  </div>
+</div>
